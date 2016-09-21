@@ -8,7 +8,7 @@ function statement(customer, movies) {
         let movie = movieFor(rental);
         let thisAmount = getAmount(rental);
 
-        calculateFrequentRenderPoints(movie,rental);
+        calculateFrequentRenderPoints(rental);
 
         //print figures for this rental
         result += `\t${movie.title}\t${thisAmount}\n`;
@@ -21,11 +21,11 @@ function statement(customer, movies) {
     return result;
 
     function movieFor(rental) {
-        return movies[rental.movieID]
+        return movies[rental.movieID];
     }
 
     function getAmount(rental) {
-        let movie = movieFor(rental)
+        let movie = movieFor(rental);
         let thisAmount = 0;
 
         // determine amount for each movie
@@ -49,7 +49,8 @@ function statement(customer, movies) {
         return thisAmount;
     }
 
-    function calculateFrequentRenderPoints(movie,rental){
+    function calculateFrequentRenderPoints(rental){
+        let movie = movieFor(rental);
         //add frequent renter points
         frequentRenterPoints++;
         // add bonus for a two day new release rental
