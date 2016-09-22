@@ -5,13 +5,12 @@ function statement(customer, movies) {
     let totalFrequentRentalPoints = 0;
     let result = `Rental Record for ${customer.name}\n`;
     for (let rental of customer.rentals) {
-        let movie = movieFor(rental);
         let thisAmount = getAmount(rental);
 
         totalFrequentRentalPoints += getFrequentRentalPoints(rental);
 
         //print figures for this rental
-        result += `\t${movie.title}\t${thisAmount}\n`;
+        result += `\t${movieFor(rental).title}\t${thisAmount}\n`;
         totalAmount += thisAmount;
     }
     // add footer lines
