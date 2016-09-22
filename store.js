@@ -1,5 +1,9 @@
 "use strict"
 
+function getFrequentRentalPoints(rental,movies){
+        return (movieFor(rental,movies).code === "new" && rental.days > 2) ? 2:1;
+    }
+
 function movieFor(rental,movies) {
         return movies[rental.movieID];
     }
@@ -48,14 +52,10 @@ function statement(customer, movies) {
     result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
     return result;
 
-    function getFrequentRentalPoints(rental){
-        return (movieFor(rental,movies).code === "new" && rental.days > 2) ? 2:1;
-    }
-
     function getTotalFrequentRentalPoints(customer){
         let totalFrequentRentalPoints = 0;
         for (let rental of customer.rentals) {
-            totalFrequentRentalPoints += getFrequentRentalPoints(rental);
+            totalFrequentRentalPoints += getFrequentRentalPoints(rental,movies);
         }
         return totalFrequentRentalPoints;
     }
