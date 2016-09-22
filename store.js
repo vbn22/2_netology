@@ -1,12 +1,7 @@
 "use strict"
 
 function statement(customer, movies) {
-    let result = getResult(customer);
-    
-    // add footer lines
-    result += `Amount owed is ${getTotalAmount(customer)}\n`;
-    result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
-    return result;
+    return statementText();
 
     function movieFor(rental) {
         return movies[rental.movieID];
@@ -63,6 +58,15 @@ function statement(customer, movies) {
             totalAmount += getAmount(rental);
         }
         return totalAmount;
+    }
+    
+    function statementText() {
+        let result = getResult(customer);
+
+        // add footer lines
+        result += `Amount owed is ${getTotalAmount(customer)}\n`;
+        result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
+        return result;
     }
 }
 
