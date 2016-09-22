@@ -2,11 +2,10 @@
 
 function statement(customer, movies) {
     let result = getResult(customer);
-
+    
     // add footer lines
     result += `Amount owed is ${getTotalAmount(customer)}\n`;
     result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
-
     return result;
 
     function movieFor(rental) {
