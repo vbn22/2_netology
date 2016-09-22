@@ -62,14 +62,14 @@ function statementText(customer, movies) {
 }
 
 function statementHTML(customer, movies) {
-    let result = `Rental Record for ${customer.name}\n`;
+    let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
+    result += `<table>\n`;
     for (let rental of customer.rentals) {
-        result += `\t${movieFor(rental,movies).title}\t${getAmount(rental,movies)}\n`;
+        result += `<tr><td>${movieFor(rental,movies).title}</td><td>${getAmount(rental,movies)}</td></tr>\n`;
     }
-
-    // add footer lines
-    result += `Amount owed is ${getTotalAmount(customer,movies)}\n`;
-    result += `You earned ${getTotalFrequentRentalPoints(customer,movies)} frequent renter points\n`;
+    result += `</table>\n`;
+    result += `<p>Amount owed is <em>${getTotalAmount(customer,movies)}</em></p>\n`;
+    result += `<p>You earned <em>${getTotalFrequentRentalPoints(customer,movies)}</em> frequent renter points</p>\n`;
     return result;
 }
 
