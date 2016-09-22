@@ -50,8 +50,7 @@ function statement(customer, movies) {
     }
 
     function getFrequentRentalPoints(rental){
-        let movie = movieFor(rental);
-        return (movie.code === "new" && rental.days > 2) ? 2:1;
+        return (movieFor(rental).code === "new" && rental.days > 2) ? 2:1;
     }
 }
 
