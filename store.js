@@ -1,14 +1,11 @@
 "use strict"
 
 function statement(customer, movies) {
-
-    let totalFrequentRentalPoints = getTotalFrequentRentalPoints(customer);
     let result = getResult(customer);
-    let totalAmount = getTotalAmount(customer);
 
     // add footer lines
-    result += `Amount owed is ${totalAmount}\n`;
-    result += `You earned ${totalFrequentRentalPoints} frequent renter points\n`;
+    result += `Amount owed is ${getTotalAmount(customer)}\n`;
+    result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
 
     return result;
 
