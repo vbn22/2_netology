@@ -1,7 +1,10 @@
 "use strict"
 
-function statement(customer, movies) {
-    return statementText();
+function statement(customer, movies, text) {
+    if (text === 'text'){
+        return statementText();
+    }
+
 
     function movieFor(rental) {
         return movies[rental.movieID];
@@ -94,4 +97,4 @@ let movies = {
     // etc
 }
 
-console.log(statement(customer, movies))
+console.log(statement(customer, movies, 'text'))
