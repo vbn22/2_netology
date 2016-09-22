@@ -49,12 +49,24 @@ function getTotalFrequentRentalPoints(customer,movies){
         return totalFrequentRentalPoints;
     }
 
-function statement(customer, movies) {
+function statementText(customer, movies) {
     let result = `Rental Record for ${customer.name}\n`;
     for (let rental of customer.rentals) {
         result += `\t${movieFor(rental,movies).title}\t${getAmount(rental,movies)}\n`;
     }
     
+    // add footer lines
+    result += `Amount owed is ${getTotalAmount(customer,movies)}\n`;
+    result += `You earned ${getTotalFrequentRentalPoints(customer,movies)} frequent renter points\n`;
+    return result;
+}
+
+function statementHTML(customer, movies) {
+    let result = `Rental Record for ${customer.name}\n`;
+    for (let rental of customer.rentals) {
+        result += `\t${movieFor(rental,movies).title}\t${getAmount(rental,movies)}\n`;
+    }
+
     // add footer lines
     result += `Amount owed is ${getTotalAmount(customer,movies)}\n`;
     result += `You earned ${getTotalFrequentRentalPoints(customer,movies)} frequent renter points\n`;
@@ -85,4 +97,5 @@ let movies = {
     // etc
 }
 
-console.log(statement(customer, movies))
+console.log(statementText(customer, movies))
+console.log(statementHTML(customer, movies))
