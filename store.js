@@ -114,4 +114,5 @@ let movies = {
     // etc
 }
 
+console.log(statement(customer, movies, 'text'))
 console.log(statement(customer, movies, 'html'))
