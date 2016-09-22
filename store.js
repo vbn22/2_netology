@@ -5,7 +5,6 @@ function statement(customer, movies) {
     let totalFrequentRentalPoints = getTotalFrequentRentalPoints();
     let result = getResult();
 
-
     let totalAmount = 0;
     for (let rental of customer.rentals) {
         totalAmount += getAmount(rental);
