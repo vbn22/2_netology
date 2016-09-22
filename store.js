@@ -4,9 +4,16 @@ function statement(customer, movies) {
     let totalAmount = 0;
     let totalFrequentRentalPoints = 0;
     let result = `Rental Record for ${customer.name}\n`;
+
     for (let rental of customer.rentals) {
         totalFrequentRentalPoints += getFrequentRentalPoints(rental);
+    }
+
+    for (let rental of customer.rentals) {
         result += `\t${movieFor(rental).title}\t${getAmount(rental)}\n`;
+    }
+
+    for (let rental of customer.rentals) {
         totalAmount += getAmount(rental);
     }
 
