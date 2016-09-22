@@ -8,8 +8,6 @@ function statement(customer, movies) {
         let thisAmount = getAmount(rental);
 
         totalFrequentRentalPoints += getFrequentRentalPoints(rental);
-
-        //print figures for this rental
         result += `\t${movieFor(rental).title}\t${thisAmount}\n`;
         totalAmount += thisAmount;
     }
