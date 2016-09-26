@@ -1,12 +1,19 @@
 "use strict"
 
+// сравнительно большой метод
 function statement(customer, movies) {
   let totalAmount = 0;
+  // разный стиль имен переменных
   let frequentRenterPoints = 0;
   let result = `Rental Record for ${customer.name}\n`;
+
+  // неинформативное название переменной 'r'
   for (let r of customer.rentals) {
     let movie = movies[r.movieID];
     let thisAmount = 0;
+
+    // оператор типа switch можно избежать
+    // комментарии в коде
 
     // determine amount for each movie
     switch (movie.code) {
