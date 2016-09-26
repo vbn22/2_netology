@@ -17,7 +17,8 @@ function statement(customer, movies) {
 
     // determine amount for each movie
     switch (movie.code) {
-      case "regular":
+        case "regular":
+        // похожие участки кода
         thisAmount = 2;
         if (r.days > 2) {
           thisAmount += (r.days - 2) * 1.5;
@@ -27,6 +28,7 @@ function statement(customer, movies) {
         thisAmount = r.days * 3;
         break;
       case "childrens":
+        // похожие участки кода
         thisAmount = 1.5;
         if (r.days > 3) {
           thisAmount += (r.days - 3) * 1.5;
