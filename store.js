@@ -71,12 +71,8 @@ function statement(customerData, movies) {
     }
 
     result += `Amount owed is ${customer.getTotalAmount}\n`;
-    result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
+    result += `You earned ${customer.getTotalFrequentRentalPoints} frequent renter points\n`;
     return result;
-
-    function getTotalFrequentRentalPoints(customer){
-
-    }
     }
 
 
