@@ -54,14 +54,26 @@ class Rental{
     }
 }
 
+
+function statementHTML(customerData, movies) {
+    const customer = new Customer(customerData, movies);
+    let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
+    result += `<table>\n`;
+    for (let rental of customer.rentals) {
+        result += `<tr><td>${rental.movie.title}</td><td>${rental.amount}</td></tr>\n`;
+    }
+    result += `<table>\n`;
+    result += `<p>Amount owed is <em>${customer.getTotalAmount}</em></p>\n`;
+    result += `<p>You earned <em>${customer.getTotalFrequentRentalPoints}</em> frequent renter points</p>\n`;
+    return result;
+    }
+
 function statement(customerData, movies) {
     const customer = new Customer(customerData, movies);
-
     let result = `Rental Record for ${customer.name}\n`;
     for (let rental of customer.rentals) {
         result += `\t${rental.movie.title}\t${rental.amount}\n`;
     }
-
     result += `Amount owed is ${customer.getTotalAmount}\n`;
     result += `You earned ${customer.getTotalFrequentRentalPoints} frequent renter points\n`;
     return result;
@@ -91,4 +103,5 @@ let movies = {
     // etc
 }
 
-console.log(statement(customer, movies))
+console.log(statement(customer, movies));
+console.log(statementHTML(customer, movies));
