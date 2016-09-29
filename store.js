@@ -1,39 +1,40 @@
 "use strict"
 
 class Customer{
-    constructor(data){
+    constructor(data, movies){
         this._data = data;
+        this._movies = movies;
     }
     get name() {return this._data.name;}
-    get rentals() {return this._data.rentals.map(r => new Rental(r));}
+    get rentals() {return this._data.rentals.map(r => new Rental(r, movies));}
 }
 
 class Rental{
-    constructor(data){
+    constructor(data, movies){
         this._data = data;
+        this._movies = movies;
     }
     get days() {return this._data.days;}
     get movieID() {return this._data.movieID;}
+    get movie() {
+        return this._movies[this.movieID]
+    }
 }
 
 function statement(customerData, movies) {
-    const customer = new Customer(customerData);
+    const customer = new Customer(customerData, movies);
 
     let result = `Rental Record for ${customer.name}\n`;
     for (let rental of customer.rentals) {
-        result += `\t${movieFor(rental).title}\t${getAmount(rental)}\n`;
+        result += `\t${rental.movie.title}\t${getAmount(rental)}\n`;
     }
 
     result += `Amount owed is ${getTotalAmount(customer)}\n`;
     result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
     return result;
 
-    function movieFor(rental) {
-        return movies[rental.movieID];
-    }
-
     function getAmount(rental) {
-        let movie = movieFor(rental);
+        let movie = rental.movie;
         let thisAmount = 0;
 
         // determine amount for each movie
@@ -58,7 +59,7 @@ function statement(customerData, movies) {
     }
 
     function getFrequentRentalPoints(rental){
-        return (movieFor(rental).code === "new" && rental.days > 2) ? 2:1;
+        return (rental.movie.code === "new" && rental.days > 2) ? 2 : 1;
     }
 
     function getTotalFrequentRentalPoints(customer){
