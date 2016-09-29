@@ -1,9 +1,22 @@
 "use strict"
 
-function statement(customer, movies) {
-    let result = getResult(customer);
-    
-    // add footer lines
+class Customer{
+    constructor(data){
+        this._data = data;
+    }
+    get name(){return this._data.name;}
+    get rentals(){return this._data.rentals;}
+}
+
+
+function statement(customerData, movies) {
+    const customer = new Customer(customerData);
+
+    let result = `Rental Record for ${customer.name}\n`;
+    for (let rental of customer.rentals) {
+        result += `\t${movieFor(rental).title}\t${getAmount(rental)}\n`;
+    }
+
     result += `Amount owed is ${getTotalAmount(customer)}\n`;
     result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
     return result;
@@ -47,14 +60,6 @@ function statement(customer, movies) {
             totalFrequentRentalPoints += getFrequentRentalPoints(rental);
         }
         return totalFrequentRentalPoints;
-    }
-
-    function getResult(customer){
-        let result = `Rental Record for ${customer.name}\n`;
-        for (let rental of customer.rentals) {
-            result += `\t${movieFor(rental).title}\t${getAmount(rental)}\n`;
-        }
-        return result;
     }
 
     function getTotalAmount(customer){
