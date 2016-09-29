@@ -14,6 +14,13 @@ class Customer{
         }
         return totalAmount;
     }
+    get getTotalFrequentRentalPoints() {
+        let totalFrequentRentalPoints = 0;
+        for (let rental of this.rentals) {
+            totalFrequentRentalPoints += rental.getFrequentRentalPoints;
+        }
+        return totalFrequentRentalPoints;
+    }
 }
 
 class Rental{
@@ -68,11 +75,7 @@ function statement(customerData, movies) {
     return result;
 
     function getTotalFrequentRentalPoints(customer){
-        let totalFrequentRentalPoints = 0;
-        for (let rental of customer.rentals) {
-            totalFrequentRentalPoints += rental.getFrequentRentalPoints;
-        }
-        return totalFrequentRentalPoints;
+
     }
     }
 
