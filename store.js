@@ -7,6 +7,13 @@ class Customer{
     }
     get name() {return this._data.name;}
     get rentals() {return this._data.rentals.map(r => new Rental(r, movies));}
+    get getTotalAmount() {
+        let totalAmount = 0;
+        for (let rental of this.rentals) {
+            totalAmount += rental.amount;
+        }
+        return totalAmount;
+    }
 }
 
 class Rental{
@@ -56,7 +63,7 @@ function statement(customerData, movies) {
         result += `\t${rental.movie.title}\t${rental.amount}\n`;
     }
 
-    result += `Amount owed is ${getTotalAmount(customer)}\n`;
+    result += `Amount owed is ${customer.getTotalAmount}\n`;
     result += `You earned ${getTotalFrequentRentalPoints(customer)} frequent renter points\n`;
     return result;
 
@@ -67,15 +74,7 @@ function statement(customerData, movies) {
         }
         return totalFrequentRentalPoints;
     }
-
-    function getTotalAmount(customer){
-        let totalAmount = 0;
-        for (let rental of customer.rentals) {
-            totalAmount += rental.amount;
-        }
-        return totalAmount;
     }
-}
 
 
 let customer = {
